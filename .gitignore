@@ -1,0 +1,10 @@
+env
+*.DS_Store
+*.pyc
+__pycache__
+manage.py
+bin
+lib
+local
+include
+pip-selfcheck.json

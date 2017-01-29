@@ -1,0 +1,18 @@
+{% extends 'base/wrapper.html' %}
+
+{% block pagetitle %} Profile {% endblock %}
+
+{% block ngapp %} ng-app="dashboard" {% endblock %}
+
+{% load staticfiles %}
+{% block content %}
+	{% csrf_token %}	
+	{% include 'base/cards/profile.html' %}
+	{% include 'base/cards/tags.html' %}
+
+{% endblock %}
+
+{% block tail_scripts %}
+	<script src="{% static 'js/profile.js' %}"></script>	
+{% endblock %}
+

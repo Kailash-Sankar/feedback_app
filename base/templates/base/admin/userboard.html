@@ -1,0 +1,216 @@
+ <main class="mdl-layout__content mdl-color--grey-100">
+		<div class="mdl-grid demo-content">
+		
+			 	<div class="demo-graphs mdl-shadow--4dp goc-color--grayish mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet">
+						<div class="mdl-cell mdl-cell--12-col mdl-grid goc-color--white">
+				<div class="goc-box-header l1">Induction Progress</div>
+			</div>
+					<div id="progress_bar">
+						  <div class="step_container">
+							<div class="step done" data-step="prg_system">
+							  <span class="status closed">
+								<i class="material-icons">desktop_windows</i>
+							  <span>
+						   </div>  
+							<span class="tag">System<span>
+						  </div>  
+						  
+						  <div class="step_container bar done">
+						  </div>
+							  
+						  <div class="step_container">
+						   <div class="step done" data-step="prg_buddy">
+							 <span class="status closed">
+								<i class="material-icons">face</i>
+							<span>
+						   </div>  
+							<span class="tag">Buddy<span>
+						  </div>  
+							  
+						   <div class="step_container bar done"></div>
+						
+						  <div class="step_container">
+						   <div class="step" data-step="prg_accounts">
+							 <span class="status active">
+								<i class="material-icons">perm_identity</i>
+							 <span>
+						   </div>  
+							<span class="tag">Accounts<span>
+						  </div> 
+						  
+						  <div class="step_container bar"></div>
+						
+						  <div class="step_container">
+						   <div class="step" data-step="prg_training">
+							 <span class="status locked">
+							 <i class="material-icons">class</i>
+						<span>
+						   </div>  
+							<span class="tag">Training<span>
+						  </div> 
+							  
+						  <div class="step_container bar">
+						  </div> 
+							  
+							<div class="step_container">
+						   <div class="step" data-step="prg_assignments">
+							 <span class="status locked">
+								<i class="material-icons">assignment</i>
+							<span>
+						   </div>  
+							<span class="tag">Tests<span>
+						  </div>      
+						 
+						  </div> 
+						  <div id="prog_bar_container" class="mdl-cell mdl-cell--8-col mdl-grid goc-color--white mar-auto">
+							<div id="prg_accounts" style="width:100%;display:none;" class="progress-data-container goc-table-container">
+								
+								<div class="mdl-cell mdl-cell--12-col mdl-grid goc-color--white mar-auto">
+									<div class="goc-box-header l1">Accounts
+										<span style="float:right"><i class="material-icons show-pointer">close</i></span>
+									</div>
+									
+									
+								</div>
+								<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mar-auto" style="width: 90%;">
+								  <thead>
+									<tr>
+									  <th class="mdl-data-table__cell--non-numeric">Account</th>
+									  <th>Status</th>
+									  <th>Owner</th>
+									  <th>Action</th>
+									</tr>
+								  </thead>
+								  <tbody>
+									<tr>
+									  <td class="mdl-data-table__cell--non-numeric">STC</td>
+									  <td><i class="material-icons">check</i></td>
+									  <td>[Manager Name]</td>
+									  <td><i class="material-icons show-pointer">mode_edit</i></td>
+									</tr>
+									<tr>
+									  <td class="mdl-data-table__cell--non-numeric">VPN</td>
+									  <td><i class="material-icons">hourglass_full</i></td>
+									    <td>Aleksey Bury</td>
+									  <td><i class="material-icons show-pointer">mode_edit</i></td>
+									</tr>
+									<tr>
+									  <td class="mdl-data-table__cell--non-numeric">Atlassian</td>
+									  <td>In Progress</td>
+									   <td>Sibu Thomas</td>
+									  <td><a class="material-icons show-pointer ind-js-event" href="#send_acc_mail">mode_edit</a></td>
+									</tr>
+									<tr>
+									  <td class="mdl-data-table__cell--non-numeric">Dev</td>
+									  <td>Created</td>
+									  <td>Sibu Thomas</td>
+									  <td><i class="material-icons show-pointer">mode_edit</i></td>
+									</tr>
+								  </tbody>
+								</table>
+							</div>
+						  </div>
+			</div>
+		
+		
+          <div class="demo-charts mdl-color--white mdl-shadow--4dp mdl-cell mdl-cell--12-col mdl-grid">
+			<div class="mdl-cell mdl-cell--12-col mdl-grid mdl-color-text--grey-600">
+				<h3 class="goc-box-header">Trainings</h3>
+			</div>
+			<div class="mdl-cell mdl-cell--12-col mdl-grid">
+			<svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
+			   <text x="0.5" y="0.2" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle" dy="0.1">Perl</text>
+              <use xlink:href="#piechart" mask="url(#piemask)" />
+              <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" dy="0.1">93<tspan font-size="0.2" dy="-0.07">%</tspan></text>
+            </svg>
+            <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
+			   <text x="0.5" y="0.2" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle" dy="0.1">SQL</text>	
+              <use xlink:href="#piechart" mask="url(#piemask)" />
+              <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" dy="0.1">82<tspan dy="-0.07" font-size="0.2">%</tspan></text>
+            </svg>
+            <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
+			  <text x="0.5" y="0.2" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle" dy="0.1">Jquery</text>	
+              <use xlink:href="#piechart" mask="url(#piemask)" />
+              <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" dy="0.1">82<tspan dy="-0.07" font-size="0.2">%</tspan></text>
+            </svg>
+            <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
+			  <text x="0.5" y="0.2" font-family="Roboto" font-size="0.1" fill="#888" text-anchor="middle" dy="0.1">HTML</text>	
+              <use xlink:href="#piechart" mask="url(#piemask)" />
+              <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" dy="0.1">82<tspan dy="-0.07" font-size="0.2">%</tspan></text>
+            </svg>
+			 </div>
+			 <div class="mdl-color-text--grey-600 goc-box-footer">View More...</div>		
+          </div>
+		  
+			 <div class="demo-options mdl-card mdl-color--deep-purple-500 mdl-shadow--4dp mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet">
+              <div class="mdl-card__supporting-text mdl-color-text--blue-grey-50">
+                <div class="mdl-cell mdl-cell--12-col mdl-grid goc-color--white l1">
+					<div class="goc-box-header l1">Training Plan</div>
+				</div>
+				<div style="text-align: center;">
+				Please wait...<br/>
+					<div class="mdl-spinner mdl-js-spinner is-active"></div>
+                </div>
+				
+				
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+              
+              </div>
+            </div>
+		  
+		  	<div class="demo-graphs mdl-shadow--4dp goc-color--green mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet">
+			
+						<div class="mdl-cell mdl-cell--12-col mdl-grid mdl-color-text--grey-600">
+				<div class="goc-box-header l1">Recent Activity from Christian Bale</div>
+			</div>
+			<div class="goc-table-container">
+			<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+  <thead>
+	 <tr>
+      <th> Section </th>
+	  <th> Summary </th>
+	  <th> Timestamp </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Training</td>
+  	  <td>Took MySQL level 1 test.</td>
+      <td>16-08-2015</td>
+    </tr>
+    <tr>
+      <td>Training</td>
+  	  <td>Started Perl traning.</td>
+      <td>15-08-2015</td>
+    </tr>
+    <tr>
+      <td>Induction</td>
+	  <td>Was assigned Sumesh as a buddy.</td>
+      <td>15-08-2015</td>
+    </tr>
+	<tr>
+		<td colspan="4" style="text-align:center;">View More...</td>
+	</tr>
+  </tbody>
+</table>
+</div>
+			
+			
+			</div>
+	
+	 	
+			</div>		
+	 </main>
+	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" style="position: fixed; left: -1000px; height: -1000px;">
+        <defs>
+          <mask id="piemask" maskContentUnits="objectBoundingBox">
+            <circle cx=0.5 cy=0.5 r=0.49 fill="white" />
+            <circle cx=0.5 cy=0.5 r=0.40 fill="black" />
+          </mask>
+          <g id="piechart">
+            <circle cx=0.5 cy=0.5 r=0.5 />
+            <path d="M 0.5 0.5 0.5 0 A 0.5 0.5 0 0 1 0.95 0.28 z" stroke="none" fill="rgba(255, 255, 255, 0.75)" />
+          </g>
+        </defs>
+      </svg>

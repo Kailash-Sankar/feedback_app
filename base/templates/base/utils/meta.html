@@ -1,0 +1,17 @@
+<html>
+	<head>
+		<style>
+			body { background-color: #000; color: green; }	
+		</style>	
+	</head>
+	<body>
+		<table>
+		<thead> <th>Meta</th> <th></th> </thead>
+		<tbody>
+			{% for k, v in values %}
+        		<tr><td>{{ k }}</td><td>{{ v }}</td></tr>
+        	{% endfor %}	
+        </tbody>
+        </table>
+	</body>
+</html>

@@ -1,0 +1,293 @@
+/* mdl overriders, custom css | ksankar 2016 */
+
+.mdl-card {  
+  width:auto;
+  min-height: 140px
+}
+
+.mdl-card__media {  
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 0px 10px;
+}
+
+.mdl-card__title {
+  padding-bottom: 0px;
+}
+
+.mdl-card__supporting-text {
+  padding: 8px 16px;
+  width: 95%;
+  position: relative;
+  margin-top: 5px;
+}
+
+.center-this .mdl-card__media {
+  text-align: center;  
+}
+
+.mdl-card__media .pre-content {
+  white-space: pre-line;
+  line-height: 1.2;
+}
+
+.mdl-chip__contact {
+  top: -1.5px;
+  position: relative;
+}
+
+.mdl-chip {
+  background-color: initial;
+  border: 1px solid rgb(255, 165, 0);
+}
+
+/* ---- post content ---- */
+
+.post-sig span.up {
+  position: relative;
+  top: -5px;
+  border-top: 1px solid saddlebrown;
+}
+
+.post-sig span.down {
+  position: absolute;
+  top: 4px;
+  font-size: 14px;
+}
+
+span.down a {
+  text-decoration: none;
+}
+
+.date-time {
+  font-size: 22px;
+  padding: 10px;
+  text-align: center;
+}
+
+.line-breaker {
+  border: 1px solid #555;
+  margin: 10px 1px;
+}
+
+.line-breaker.tdl {
+  border: 0.5px solid #FFC107;
+  margin-right: 15px;
+}
+
+.spacer {
+  margin: 20px;
+}
+
+.card-st1 {
+  width: auto;
+  font-family: 'Arimo', sans-serif;
+  padding: 1px;
+}
+
+.card-st1 ul {
+  padding-left: 15px;
+}
+
+.td-li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.td-li .clickable {
+  cursor: pointer;
+  clear:right;
+}
+
+.td-li .clickable:hover {
+  color: rebeccapurple;  
+}
+
+/* --- like buttons --- */
+
+.like-co {
+  float:right;
+}
+
+.like {
+  position: relative;  
+}
+
+.like i {
+  cursor:pointer;
+}
+
+.like.up {
+  top: 5px;
+}
+
+.like.down {
+  top: 2.5px;
+}
+
+.like.up i {
+  transform:rotate(-90deg);  
+}
+
+.like.down i {
+  transform:rotate(90deg);  
+}
+
+.like:hover {
+  color:#FFA500;
+}
+
+.like.liked i {
+  color: rgb(255, 82, 82);
+}
+
+/* ---- icons ---- */
+
+.add-ico {
+  -webkit-align-self: flex-start;
+  align-self: flex-start;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.add-ico i:hover {
+  color: rgb(255, 87, 34);
+}
+
+.add-ico i {
+  transition: transform 500ms linear;
+  font-size: 28px;
+}
+
+i.loading {
+  -webkit-animation:spin 1s linear infinite;
+  -moz-animation:spin 1s linear infinite;
+  animation:spin 1s linear infinite;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+i.profile {
+  font-size:34px;
+}
+
+.main-ico i {
+  font-size: 48px;
+  line-height: 2;  
+  cursor: pointer;
+  animation: roll 2s linear infinite;
+}
+
+.main-ico i:hover {
+  color: rgb(255, 87, 34);
+}
+
+@keyframes roll {
+  from { transform:rotate(0deg) }
+  to { transform:rotate(360deg) }
+}
+
+.ico-anim-true {
+  transform: rotate(135deg);
+}
+
+i.chip {
+
+}
+
+/* -- message text -- */
+
+.lead-msg {
+  font-family: 'Arimo', sans-serif;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 18px;
+}
+
+.lead-msg .material-icons {
+  position: relative;
+  top: 5px;
+  font-size: 35px;
+  color: #795548;
+}
+
+.is-focused .mdl-textfield__label,
+.is-dirty .mdl-textfield__label {
+  color: rgb(255, 87, 34) !important;
+}
+
+
+.footer {  
+  bottom: 0px;
+  width: 100%;
+  font-family: monospace;
+  padding-bottom: 0px;
+  text-align: center;
+  font-size: 12.5px;
+}
+
+.footer .heart {
+  color: red;
+  top: 5px;
+  position: relative;
+}
+
+/* ----- color codes ----- */
+
+.mdl-card .mdl-card__media {
+  background-color: inherit;
+}
+
+.bg-color-x0 {
+  background-color: #CDDC39;
+}
+
+.bg-color-x1 {
+  background-color: #FFD740;
+}
+
+.bg-color-x2 {
+  background-color: #eee;
+}
+
+.bg-color-x3 {
+  background-color: #FFF176;
+}
+
+.bg-color-x4 {
+  background-color: #4DD0E1;
+}
+
+.bg-color-x5 {
+  background-color: #D2B48C;
+}
+
+.off-blk1 {
+  color: rgb(29, 31, 32);
+}
+
+.off-blk2 {
+  color: #aaa;
+}
+
+.postx1 {
+  background-color: initial;
+}
+
+/* ---------- mdl form ---------- */
+
+.ask-form .mdl-textfield,
+.answer-form .mdl-textfield,
+.profile-form .mdl-textfield {
+  width: 500px;  
+}
+
+.answer-form {
+  border-top: 1px solid #aaa;
+  background-color:#ddd;
+  padding:10px;
+}
+

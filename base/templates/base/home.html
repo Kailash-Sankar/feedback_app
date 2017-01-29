@@ -1,0 +1,106 @@
+{% load staticfiles %}
+<html>
+<title>QWeb</title>
+<script src="{% static 'mdl/material.min.js' %}"></script>
+<script src="{% static 'mdl/jquery-2.1.4.min.js' %}"></script>
+<link rel="stylesheet" href="{% static 'mdl/material.cyan-red.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/level.css' %}">
+<link rel="stylesheet" href="{% static 'mdl/mdl.css' %}">
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+</html>
+<body>
+	<!-- Always shows a header, even in smaller screens. -->
+	<!-- Uses a transparent header that draws on top of the layout's background -->
+
+<div class="layout-transparent mdl-layout mdl-js-layout">
+  <header class="mdl-layout__header mdl-layout__header--transparent">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">QWeb</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation -->
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="#slide-home">Home</a>
+        <a class="mdl-navigation__link" href="#slide-about">About</a>
+        <a class="mdl-navigation__link" href="#slide-contact">Contact</a>
+        <a class="mdl-navigation__link" href="#slide-login">Login</a>
+      </nav>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">QWeb</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="#slide-home">Home</a>
+      <a class="mdl-navigation__link" href="#slide-about">About</a>
+      <a class="mdl-navigation__link" href="#slide-contact">Contact</a>
+      <a class="mdl-navigation__link" href="#slide-login">Login</a>
+    </nav>
+  </div>
+</div>
+	  <main class="mdl-layout__content">
+		
+		
+<div class="home-content">
+	<div class="sp-container">
+	 <div class="sp-content">
+		<div class="sp-wrap sp-left">
+			<h2>
+				<span class="sp-top">Questions</span> 
+				<span class="sp-mid">Q</span> 
+				<span class="sp-bottom">The friendly</span>
+			</h2>
+		</div>
+		<div class="sp-wrap sp-right">
+			<h2>
+				<span class="sp-top">Answers</span> 
+				<span class="sp-mid">Web</span> 
+				<span class="sp-bottom">Q&A site</span> 
+			</h2>
+		</div>
+	</div>
+	<div class="sp-full">
+		<h2>Judge a man by his questions rather than by his answers. 
+			<span class="quote-sign">- Voltaire</span>
+		</h2>
+	</div>
+	</div>
+</div>	
+		
+		<div id="slide-about" class="goc-home-text-container">
+			<h3>About</h3>
+			Schrödinger's cat is a thought experiment, sometimes described as a paradox, devised by Austrian physicist Erwin Schrödinger in 1935. It illustrates what he saw as the problem of the Copenhagen interpretation of quantum mechanics applied to everyday objects.
+		</div>
+		<div id="slide-contact" class="goc-home-text-container">
+			<h3>Contact</h3>
+			The Heisenberg Uncertainty Principle states that you can never simultaneously know the exact position and the exact speed of an object. Why not? Because everything in the universe behaves like both a particle and a wave at the same time. Chad Orzel navigates this complex concept of quantum physics.
+		</div>
+		<div id="slide-login" class="goc-home-text-container">
+			<h3>Login</h3>
+					<form method="post" action="/login/">
+					{% csrf_token %}
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+							<input class="mdl-textfield__input" type="text" id="field-email" name="username"/>
+							<label class="mdl-textfield__label" for="field-email">Username...</label>
+						</div>
+						<br/>
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+							<input class="mdl-textfield__input" type="password" id="field-pwd" name="password" />
+							<label class="mdl-textfield__label" for="field-pwd">Password...</label>
+						</div>
+						<br/>
+						<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+							Login
+						</button>
+						<a class="forgot-pwd-link">Forgot Password?</a>
+					</form>
+		</div>
+	  </main>
+	</div>
+	
+	
+
+
+</body>
+<script src="{% static 'js/home.js' %}"></script>
+</html>

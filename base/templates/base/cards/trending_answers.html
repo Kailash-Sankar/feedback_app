@@ -1,0 +1,32 @@
+{% verbatim %}
+<div class="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet">
+  <div class="mdl-card mdl-shadow--4dp card-st1 bg-color-x1" ng-controller="trendingAnswers">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">Do you agree?</h2>
+      <span class="add-ico">
+        <i class="material-icons" ng-class="{loading: jaxip == true }"
+        ng-click="updateList()">autorenew</i>                    
+      </span>
+    </div>
+
+    <div class="mdl-card__media" id="list-view">
+      <div class="line-breaker"></div>
+      <ul>
+        <li class="td-li" ng-model="trendingItems" ng-repeat="item in trendingItems track by $index">          
+          <span class="clickable" ng-click="redirQ(item.id)">{{item.summary}}</span>                                
+          <div class="item-due-date" ng-show="item.dt">Added: {{item.dt | date:'MMM dd, yyyy' }} </div>
+          <div class="line-breaker tdl"></div>
+        </li>
+        <ul>
+        </div>
+
+        <div class="mdl-card__supporting-text" ng-if="trendingItems.length == 0">
+          There are no items to show :(
+        </div>
+
+        <div class="mdl-card__actions">
+        </div>
+
+      </div>
+    </div>   
+    {% endverbatim %}

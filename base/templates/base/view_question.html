@@ -1,0 +1,19 @@
+{% extends 'base/wrapper.html' %}
+
+{% block pagetitle %} Question {% endblock %}
+
+{% block ngapp %} ng-app="dashboard" {% endblock %}
+
+{% load staticfiles %}
+{% block content %}
+	{% csrf_token %}
+	<input type="hidden" value="{{ qid }}" name='qid'>
+	{% include 'base/cards/question.html' %}
+	{% include 'base/cards/answers.html' %}
+
+{% endblock %}
+
+{% block tail_scripts %}
+	<script src="{% static 'js/view.js' %}"></script>	
+{% endblock %}
+

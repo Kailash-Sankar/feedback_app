@@ -1,0 +1,38 @@
+{% load staticfiles %}
+<html>
+<head>
+<title>{% block pagetitle %}{% endblock %}</title>
+<script src="{% static 'mdl/material.min.js' %}"></script>
+<script src="{% static 'mdl/jquery-2.1.4.min.js' %}"></script>
+<script src="{% static 'js/angular.min.js' %}"></script>
+
+<link rel="stylesheet" href="{% static 'mdl/material.min.css' %}">
+<link rel="stylesheet" href="{% static 'mdl/mdl.css' %}">
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+<!-- ng tags -->
+<link rel="stylesheet" href="{% static 'css/ng-tags-input.css' %}">
+<script src="{% static 'js/ng-tags-input.js' %}"></script>
+
+</head>
+<body>
+	<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+		{% include 'base/top_bar.html'  %}
+		{% include 'base/side_bar.html' %}
+		<main class="mdl-layout__content mdl-color--grey-100" 
+		{% block ngapp %}{% endblock %}>
+			<div class="mdl-grid demo-content" ng-model="content" id="content"> 
+				{% block content %}{% endblock %}
+			</div>
+				{% include 'base/utils/toast.html' %}		
+		</main>		
+	</div>	 
+</body>
+<script src="{% static 'js/base.js' %}"></script>
+{% block tail_scripts %}{% endblock %}
+</html>
+
+
+
+ 

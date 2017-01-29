@@ -1,0 +1,8 @@
+#TODO
+
+- default to dashboard
+- global jaxmius frameoworks
+- add more comments
+- remove unused css
+- add debug statements
+- trim long summaries
