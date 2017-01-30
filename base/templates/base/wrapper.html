@@ -20,19 +20,15 @@
 	<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
 		{% include 'base/top_bar.html'  %}
 		{% include 'base/side_bar.html' %}
-		<main class="mdl-layout__content mdl-color--grey-100" 
+		<main class="mdl-layout__content mdl-color--grey-100"
 		{% block ngapp %}{% endblock %}>
-			<div class="mdl-grid demo-content" ng-model="content" id="content"> 
+			<div class="mdl-grid demo-content" ng-model="content" id="content">
 				{% block content %}{% endblock %}
 			</div>
-				{% include 'base/utils/toast.html' %}		
-		</main>		
-	</div>	 
+				{% include 'base/utils/toast.html' %}
+		</main>
+	</div>
 </body>
 <script src="{% static 'js/base.js' %}"></script>
 {% block tail_scripts %}{% endblock %}
 </html>
-
-
-
- 

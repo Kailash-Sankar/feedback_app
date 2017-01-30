@@ -1,6 +1,6 @@
 // Angular base app | ksankar 2016
 
-var app = angular.module('dashboard', ['ngTagsInput']);
+var app = angular.module('dashboard', []);
 
 //ajax service
 app.factory('jaximus', function ($http, $rootScope, $timeout) {
@@ -19,15 +19,15 @@ app.factory('jaximus', function ($http, $rootScope, $timeout) {
 
       //loads a chunk of data
       loadDataSet : function(url) {
-        return $http.get(url);   
+        return $http.get(url);
       },
 
       //post actions
       likePost : function(type,id,like,myLike) {
         var req = {
           method: 'POST',
-          url: '/' + type + '/' + id + '/like',          
-          data: { 
+          url: '/' + type + '/' + id + '/like',
+          data: {
             'like' : like,
             'myLike' : myLike
             //'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val()
@@ -43,8 +43,8 @@ app.factory('jaximus', function ($http, $rootScope, $timeout) {
           url: url,
           data: data
         };
-        return $http(req);  
-      } 
+        return $http(req);
+      }
   };
 });
 
@@ -72,10 +72,10 @@ app.run(function($rootScope) {
       mdlUpgradeDom = true;
   });
   */
-  
+
   // globals
   $rootScope.bgClr = ['x0','x1','x2','x3','x4','x5'];
-  
+
 });
 
 ///csrf token for ajax calls
@@ -112,7 +112,7 @@ app.filter('reverse', function() {
 
 //attach global utility routines
 app.run(function($rootScope,$window) {
-        
+
         //redirect to question page
         $rootScope.redirQ = function(qid) {
             console.log('redirection to',qid);
@@ -136,9 +136,9 @@ app.directive('mdlDirtyCheck', ['$timeout', function ($timeout) {
     link: function ($scope, element, attrs) {
       $scope.$on('dataloaded', function () {
         console.log('data directive exec');
-        $timeout(function () { 
+        $timeout(function () {
             $("form .mdl-textfield").each( function() {
-              $(this).get(0).MaterialTextfield.checkDirty();              
+              $(this).get(0).MaterialTextfield.checkDirty();
             });
         }, 100, false);
       })
