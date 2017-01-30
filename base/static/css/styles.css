@@ -127,58 +127,6 @@ html, body {
   max-width: 1500px;
 }
 
-.demo-charts {
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.demo-chart:nth-child(1) {
-  color: #ACEC00;
-}
-.demo-chart:nth-child(2) {
-  color: #00BBD6;
-}
-.demo-chart:nth-child(3) {
-  color: #BA65C9;
-}
-.demo-chart:nth-child(4) {
-  color: #EF3C79;
-}
-.demo-graphs {
-  padding: 16px 32px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: stretch;
-  -webkit-align-items: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
-}
-/* TODO: Find a proper solution to have the graphs
- * not float around outside their container in IE10/11.
- * Using a browserhacks.com solution for now.
- */
-_:-ms-input-placeholder, :root .demo-graphs {
-  min-height: 664px;
-}
-_:-ms-input-placeholder, :root .demo-graph {
-  max-height: 300px;
-}
-/* TODO end */
-.demo-graph:nth-child(1) {
-  color: #00b9d8;
-}
-.demo-graph:nth-child(2) {
-  color: #d9006e;
-}
-
 .demo-cards {
   -webkit-box-align: start;
   -webkit-align-items: flex-start;
@@ -320,10 +268,10 @@ _:-ms-input-placeholder, :root .demo-graph {
 	}
 .goc-color--white {
 	        color: #eceff1; !important;
-	}		
+	}
 .goc-color--pinkish {
 			background-color: #EF3C79;
-}    
+}
 
 .goc-color--blackish {
 	background-color:#333 !important;
@@ -428,8 +376,8 @@ a.show-pointer {
 }
 
 ul.breadcrumb {
-	list-style: none; 
-	overflow: hidden; 
+	list-style: none;
+	overflow: hidden;
 	margin: 0;
 }
 
@@ -438,8 +386,8 @@ ul.breadcrumb li {
 }
 
 ul.breadcrumb li a {
-	text-decoration: underline; 
-	position: relative; 
+	text-decoration: underline;
+	position: relative;
 	display: block;
 	float: left;
 	color:#757575;
@@ -449,223 +397,6 @@ ul.breadcrumb li .material-icons {
     line-height: 1.1;
 }
 
-.book-shelf {
-	 position: relative;
-	 height: 420px;
-	 -webkit-perspective: 1800px;
-    perspective: 1800px;
-	z-index:1;
-}
-
-.book-co {
-	position:absolute;
-	 height: 400px;
-	transform-style: preserve-3d;
-	-webkit-transform-style: preserve-3d;
-    -webkit-transition: -webkit-transform .5s;
-    transition: transform .5s;
-	width: 300px;
-	transform-origin: 0 0;
-}
-
-.book-co:hover {
-  -webkit-transform: rotate3d(0,1,0,35deg);
-  transform: rotate3d(0,1,0,35deg);
-}
-
-.book-front,
-.book-back,
-.book-pages {
-    height: 400px;
-    width: 300px;
-    border: 0px solid #aaa;
-	background-color:aliceblue;
-    position: absolute;
-}
-
-.book-co div {
-	z-index:5;
-	
-}
-
-.book-co .book-front {
-  z-index:10;
-  -webkit-transform: translate3d(0,0,20px);
-  transform: translate3d(0,0,20px);
-     border-radius: 0 3px 3px 0;
-   box-shadow: inset 4px 0 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.4s linear;
-	transform-origin:0 0;
-}
-
-.book-side {
-	position:absolute;
-    height: 400px;
-    -webkit-transform: rotate3d(0,1,0,-90deg);
-    transform: rotate3d(0,1,0,-90deg);
-	background-color: aliceblue;
-	display: block;
-    width: 40px;
-    left: -20px;
-	border-bottom: 0px solid #aaa;
-    border-top: 0px solid #aaa;
-	text-align: right;
-	backface-visibility: hidden;
-}
-
-.book-side h4 { 
-	width: 400px;
-    height: 40px;
-    -webkit-transform-origin: 0 0;
-    -moz-transform-origin: 0 0;
-    transform-origin: 0 0;
-    -webkit-transform: rotate(90deg) translateY(-40px) translateX(-40px);
-    transform: rotate(90deg) translateY(-40px) translateX(-40px);
-}
-
-.book-back {
-    -webkit-transform: rotate3d(0,1,0,-180deg) translate3d(0,0,20px);
-    transform: rotate3d(0,1,0,-180deg) translate3d(0,0,20px);
-    box-shadow: 10px 10px 30px rgba(0,0,0,0.3);
-    border-radius: 3px 0 0 3px;
-}
-
-.book-front {
-   background-position: center;
-   background-repeat: no-repeat;
-
-}
-
-.book-shelf.open-sesame .book-front {
-    transform: translate3d(0px,0,20px) rotate3d(0,1,0,-160deg);
-    transform-origin: 0 0;
-}
-
-
-.book-shelf.open-sesame .book-co{
-   -webkit-transform: rotate3d(0,1,0,0deg);
-  transform: rotate3d(0,1,0,0deg);
-}
-
-.book-shelf.open-sesame {
-	 z-index: 11;
-}	 
-
-.book-shelf.open-sesame .book-front--backface {
-	transform:rotateY(0deg);
-}
-
-.book-pages {
- width: 296px;
-}
-
-.book-page--co {
- padding:5px;
- height: 90%;
- margin: 5%;
- border: 1px solid #aaa;
-}
-.book-page--co div {
-    font-size: 18px;
-    line-height: 1.2;
-}
-
-.book-page--co div.content {
-  margin-top:25px;
-}
-
-.book-front--frontface {
-	width: 300px;
-    height: 400px;
-	backface-visibility:hidden;
-	position:absolute;
-		transform-style: preserve-3d;
-}
-
-.book-front--backface {
-    background-color: #553D1B;
-    width: 300px;
-    height: 400px;
-	transform:rotateY(180deg);
-	backface-visibility:hidden;
-	position:absolute;
-	transform-style: preserve-3d;
-}
-
-.book-page--header {
-     border-bottom: 1px solid saddlebrown;
-	 margin-bottom: 3px;
-}
-
-
-.b1 .book-front,
-.b1 .book-back,
-.b1 .book-side {
-	background-color:#FF9800;
-}
-
-.b1 .book-front {
-    background-image: url(images/book-icons/perl.png);
-}
-
-.b2 .book-front,
-.b2 .book-back,
-.b2 .book-side {
-	background-color:#8BC34A;
-}
-
-.b2 .book-front {
-    background-image: url(images/book-icons/sql.png);
-}
-
-.b3 .book-front,
-.b3 .book-back,
-.b3 .book-side {
-	background-color:#00BCD4;
-}
-
-.b3 .book-front {
-	 background-image: url(images/book-icons/java.png);
-}
-
-.b4 .book-front,
-.b4 .book-back,
-.b4 .book-side {
-	background-color:#CDDC39;
-}
-
-.b4  .book-front{
- background-image: url(images/book-icons/html.png);
-}
-
-
-@media screen and (max-width: 1500px) { 
-   
-  .book-co {
-	 -webkit-transform: rotate3d(0,1,0,40deg);
-	 transform: rotate3d(0,1,0,40deg);
-   }
-
-   .book-co:hover {
-     -webkit-transform: rotate3d(0,1,0,35deg);
-     transform: rotate3d(0,1,0,35deg);
-   }
-   
-   .book-shelf.open-sesame  .book-co{
-	 -webkit-transform: rotate3d(0,1,0,0deg);
-	 transform: rotate3d(0,1,0,0deg);
-   }
-   
-}
-
-@media screen and (max-width: 1250px) { 
-   
-  .book-co {
-	 -webkit-transform: rotate3d(0,1,0,60deg);
-	 transform: rotate3d(0,1,0,60deg);
-   }
-   
-}
 
 /* ------------ folder ------------------- */
 
@@ -691,101 +422,6 @@ ul.breadcrumb li .material-icons {
     margin-right: 10px;
     top: 6px;
     position: relative;
-}
-
-/* --------- file ----------------------- */
-
-.file-co {
-	text-align:center;
-	margin: 0 auto;
-}	
-
-.file {
-    width: 300px;
-    height: 256px;
-	border:0px solid #aaa;
-}
-
-.file figure {
-	margin: 0;
-	position: relative;
-	overflow:hidden;
-    height: 100%;
-}
-
-.file figure img {
-	max-width: 100%;
-	display: block;
-	position: relative;
-	margin:auto;
-	transition: transform 0.4s;
-	top: 50;
-}
-
-figure:hover img {
-	transform: translateY(-50px);
-	    
-}
-
-figure:hover figcaption {
-	opacity: 1;
-	transform: translateY(0px);
-	transition: transform 0.4s, opacity 0.1s;
-}
-
-.file figcaption {
-	position: absolute;
-	bottom: 0px;
-	left: 0;
-	padding: 5%;
-	background: #2c3f52;
-	color: #FA8E23;
-	width:90%;
-	height:80px;
-	opacity:0;
-	transform: translateY(100%);
-	transition: transform 0.4s, opacity 0.1s 0.3s;
-}
-
-.file figcaption h3 {
-	margin: 0;
-	padding: 0;
-	color: #fff;
-	text-align:left;
-}
-
-.file figcaption span {
-	content: 'by ';
-	float:left;
-}
-
-.file figcaption span:before {
-	content: 'by ';
-}
-
-.file figcaption a {
-	text-align: center;
-	padding: 5px 10px;
-	border-radius: 2px;
-	display: inline-block;
-    background: #FFEBB5;
-    color: #000;
-	position: relative;
-    bottom: 12px;
-	float:right;
-}
-
-
-.file-co  .file:first-child {
-	background-color:rgb(255, 235, 181);
-}
-
-.training-details .mdl-card__actions {
-	text-align:center;
-} 
-
-.assign-training label.mdl-radio {
-	padding-right:20px;
 }
 
 label.mdl-radio-main {
