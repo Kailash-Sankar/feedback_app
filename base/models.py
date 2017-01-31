@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 
 class Category(models.Model):
 	name = models.CharField(max_length=80)
+	ico = models.CharField(max_length=80,null=True)
 	sort_id = models.IntegerField()
 	#add icon pic here
 	#parent = models.ForeignKey('Category',null=True,blank=True)

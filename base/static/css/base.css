@@ -1,11 +1,11 @@
 /* mdl overriders, custom css | ksankar 2016 */
 
-.mdl-card {  
+.mdl-card {
   width:auto;
   min-height: 140px
 }
 
-.mdl-card__media {  
+.mdl-card__media {
   font-family: monospace;
   font-size: 14px;
   line-height: 1.5;
@@ -24,7 +24,7 @@
 }
 
 .center-this .mdl-card__media {
-  text-align: center;  
+  text-align: center;
 }
 
 .mdl-card__media .pre-content {
@@ -101,7 +101,7 @@ span.down a {
 }
 
 .td-li .clickable:hover {
-  color: rebeccapurple;  
+  color: rebeccapurple;
 }
 
 /* --- like buttons --- */
@@ -111,7 +111,7 @@ span.down a {
 }
 
 .like {
-  position: relative;  
+  position: relative;
 }
 
 .like i {
@@ -127,11 +127,11 @@ span.down a {
 }
 
 .like.up i {
-  transform:rotate(-90deg);  
+  transform:rotate(-90deg);
 }
 
 .like.down i {
-  transform:rotate(90deg);  
+  transform:rotate(90deg);
 }
 
 .like:hover {
@@ -176,7 +176,7 @@ i.profile {
 
 .main-ico i {
   font-size: 48px;
-  line-height: 2;  
+  line-height: 2;
   cursor: pointer;
   animation: roll 2s linear infinite;
 }
@@ -220,7 +220,7 @@ i.chip {
 }
 
 
-.footer {  
+.footer {
   bottom: 0px;
   width: 100%;
   font-family: monospace;
@@ -282,7 +282,7 @@ i.chip {
 .ask-form .mdl-textfield,
 .answer-form .mdl-textfield,
 .profile-form .mdl-textfield {
-  width: 500px;  
+  width: 500px;
 }
 
 .answer-form {
@@ -291,3 +291,17 @@ i.chip {
   padding:10px;
 }
 
+/* ---------- dashboard ------------- */
+.cat-ico {
+    text-align:center;
+}
+
+.cat-ico i {
+  font-size: 65px;
+  cursor:pointer;
+  transition: transform 500ms linear;
+}
+
+.cat-ico i:hover {
+  color: rgb(255, 87, 34);
+}
