@@ -129,28 +129,3 @@ $('.redir-click').on('click',function(){
   console.log('redirecting',url);
   window.location.href = url;
 })
-
-/* dirty bit check on updated mdl form elements
-app.directive('mdlDirtyCheck', ['$timeout', function ($timeout) {
-  return {
-    link: function ($scope, element, attrs) {
-      $scope.$on('dataloaded', function () {
-        console.log('data directive exec');
-        $timeout(function () {
-            $("form .mdl-textfield").each( function() {
-              $(this).get(0).MaterialTextfield.checkDirty();
-            });
-        }, 100, false);
-      })
-    }
-  };
-}]);
-
-app.directive('eatClick', function() {
-    return function(scope, element, attrs) {
-        $(element).click(function(event) {
-            event.preventDefault();
-        });
-    };
-});
-*/

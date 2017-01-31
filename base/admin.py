@@ -14,8 +14,19 @@ class QuestionAdmin(admin.ModelAdmin):
 class AnswerAdmin(admin.ModelAdmin):
 	list_display = ('user','question','created_date')
 
+class RatingAdmin(admin.ModelAdmin):
+	list_display = ('value','ico_name')
+
+class FeedbackAdmin(admin.ModelAdmin):
+	list_display = ('rating','user')
+
+class TransportAdmin(admin.ModelAdmin):
+	list_display = ('date','type')
 
 # Register your models here.
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Answer, AnswerAdmin)
+admin.site.register(Rating,RatingAdmin)
+admin.site.register(Feedback,FeedbackAdmin)
+admin.site.register(Transport,TransportAdmin)

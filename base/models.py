@@ -35,3 +35,18 @@ class Answer(models.Model):
 
 	def __str__(self):
 		return self.description
+
+class Rating(models.Model):
+	ico_name = models.CharField(max_length=80)
+	value = models.IntegerField()
+
+class Feedback(models.Model):
+	rating = models.IntegerField()
+	created_date = models.DateTimeField(auto_now_add=True)
+	user = models.ForeignKey(User)
+
+class Transport(models.Model):
+	date = models.DateTimeField()
+	type = models.IntegerField()
+	description = models.CharField(max_length=150)
+	feedback = models.ForeignKey('Feedback')
