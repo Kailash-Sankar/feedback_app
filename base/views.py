@@ -65,7 +65,8 @@ def user_logout(request):
 #---- pages ----
 @login_required()
 def dashboard(request):
-	return render( request, 'base/dashboard.html')
+ 	cats = Category.objects.all();
+	return render( request, 'base/dashboard.html', { 'cats' : cats })
 
 @login_required()
 def category(request,cid):
@@ -85,7 +86,7 @@ def profile(request):
 def question(request,qid):
 	print 'question:',qid
 
-	qObj = Question.objects.get(id=qid);
+	qObj = Category.objects.get(id=qid);
 	user = request.user;
 
 	q = {

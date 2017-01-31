@@ -1,21 +1,16 @@
 {% extends 'base/wrapper.html' %}
 
-{% block pagetitle %} Trending {% endblock %}
+{% block pagetitle %} Feedback App {% endblock %}
 
 {% block ngapp %} ng-app="dashboard" {% endblock %}
 
 {% block content %}
-
-	{% include 'base/cards/trending_questions.html' %}
-
-	{% include 'base/cards/trending_answers.html' %}
-
-	{% include 'base/cards/my_questions.html' %}
-
+	{% for cat in cats %}
+		{% include 'base/cards/cat.html'%}
+	{% endfor %}
 {% endblock %}
 
 {% block tail_scripts %}
 	{% load staticfiles %}
 	<script src="{% static 'js/dashboard.js' %}"></script>
 {% endblock %}
-
