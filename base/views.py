@@ -70,12 +70,11 @@ def dashboard(request):
 
 @login_required()
 def category(request,cid):
-	return render( request, 'base/categories.html', {})
-
-@login_required()
-def questions(request):
-	user = request.user;
-	return render( request, 'base/questions.html')
+	cat = Category.objects.get(id=cid);
+	ratings = Rating.objects.all().order_by('id');
+	return render( request, 'base/category.html',
+		{ 'cat' : cat, 'ratings' :ratings }
+	)
 
 @login_required()
 def profile(request):
@@ -83,43 +82,42 @@ def profile(request):
 
 # ---- API endpoints -----
 
-def question(request,qid):
-	print 'question:',qid
+def saveForm(request,cid):
+	data = json.loads(request.body)
+	user = request.user
 
-	qObj = Category.objects.get(id=qid);
+	print 'test',data
+
+	fObj = Feedback(
+		rating = data['rating'],
+		user_id = user.id,
+	);
+	#fObj.save();
+
+	tObj = Transport(
+		date = data['date'],
+		type = data['type'],
+		description= data['description'],
+		feedback_id = fObj.id,
+	);
+	#tObj.save();
+
+	ret = {
+		'fid' : fObj.id,
+		'tid' : tObj.id,
+	};
+
+	return JsonResponse(ret)
+
+def questions(request,cid):
+	print 'question:',cid
+
+	qObj = Question.objects.filter(category=cid).values();
+	print
 	user = request.user;
+	print "questions",qObj
 
-	q = {
-		'qid'			: qObj.id,
-		'summary' 		: qObj.summary,
-		'description' 	: qObj.description,
-		'user' 			: qObj.user.username,
-		'created_date' 	: qObj.created_date,
-		'updated_date' 	: qObj.updated_date,
-		'likes'			: qObj.likes,
-		'myQ'		    : False,
-		'myLike'		: None,
-	}
-
-	#check if logged in user liked this answer
-	try:
-   		likeObj = QLike.objects.filter(question=qid,user=user.id).get()
-   		mylike = likeObj.like
-	except QLike.DoesNotExist:
-   		mylike = None
-   	except AttributeError:
-   		myLike = None
-
- 	q['mylike'] = mylike
-
-	#check if it's logged in user's question
- 	if qObj.user.id == user.id:
-		q['myQ'] = True
-
-	#get question tags
-	q['tags'] = QTags(qid)
-
-	print q;
+	q = list(qObj)
 	return JsonResponse(q,safe=False);
 
 
@@ -133,24 +131,6 @@ def answers(request,qid,page):
 		ansList[a.id] = row;
 
 	return JsonResponse(ansList,safe=False)
-
-
-def saveAnswer(request,qid):
-	data = json.loads(request.body)
-	user = request.user
-
-	aObj = Answer(
-		description=data['description'],
-		user_id = user.id,
-		likes=0,
-		question_id=qid,
-	);
-	aObj.save();
-
-	aRow = buildAnswerRow(aObj,user);
-
-	return JsonResponse(aRow)
-
 
 def me(request):
 	user = request.user

@@ -100,7 +100,7 @@ span.down a {
   clear:right;
 }
 
-.td-li .clickable:hover {
+.td-li .clickable:hover i {
   color: rebeccapurple;
 }
 
@@ -143,6 +143,32 @@ span.down a {
 }
 
 /* ---- icons ---- */
+
+.cat-ico {
+    text-align:center;
+}
+
+.cat-ico a {
+  font-size: 65px;
+  cursor:pointer;
+  transition: transform 500ms linear;
+  color: #333;
+  text-decoration: none;
+}
+
+.cat-ico a:hover {
+  color: rgb(255, 87, 34);
+}
+
+.smiley i {
+  font-size: 42px;
+  color:#333;
+  cursor:pointer;
+}
+
+.smiley.selected i {
+  color:#FFA500;
+}
 
 .add-ico {
   -webkit-align-self: flex-start;
@@ -289,19 +315,4 @@ i.chip {
   border-top: 1px solid #aaa;
   background-color:#ddd;
   padding:10px;
-}
-
-/* ---------- dashboard ------------- */
-.cat-ico {
-    text-align:center;
-}
-
-.cat-ico i {
-  font-size: 65px;
-  cursor:pointer;
-  transition: transform 500ms linear;
-}
-
-.cat-ico i:hover {
-  color: rgb(255, 87, 34);
 }
