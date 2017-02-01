@@ -15,7 +15,7 @@
 
       <div class="mdl-card__media" id="list-view">
 
-        <div class="line-breaker"></div>
+        <div class="line-breaker tdl"></div>
 
         <form action="#" class="ask-form" >
 
@@ -45,7 +45,7 @@
                <li class="td-li">
 
                  {% for rating in ratings %}
-                 <span class="clickable smiley" ng-click="choose_smiley({{ rating.value }})" ng-class="{'selected': rated == {{ rating.value }} }">
+                 <span class="clickable smiley" ng-click="choose_smiley({{ rating.id }})" ng-class="{'selected': rated == {{ rating.id }} }">
                      <i class="material-icons">{{ rating.ico_name }}</i>
                  </span>
                  {% endfor %}
@@ -60,19 +60,12 @@
 
           <br/>
 
-          <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-          Preview
-          </button>
-
           <button type="button" ng-click="saveForm()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary">
           Save
           </button>
-
         </form>
 
-
-
-          <div class="line-breaker tdl"></div>
+          <div class="line-breaker"></div>
       </div>
 
       <div class="mdl-card__supporting-text" ng-if="trendingItems.length == 0">

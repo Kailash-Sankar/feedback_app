@@ -1,85 +1,30 @@
-{% verbatim %}
+
 <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet">
-	<div class="mdl-card mdl-shadow--4dp card-todo bg-color-x2 pre-this" ng-controller="Answers">
-		<div class="mdl-card__title">
-			<h2 class="mdl-card__title-text">Questions</h2>
-			<span class="add-ico">
-				<i class="material-icons ico-anim-{{addMode}}" ng-click="toggleForm()">add_circle</i>
-				<i class="material-icons" ng-class="{loading: jaxip == true }" ng-click="updateList()">autorenew</i>
-			</span>
-		</div>
+  <div class="mdl-card mdl-shadow--4dp card-todo bg-color-x2">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">Q&A</h2>
+      <span class="add-ico">
+      </span>
+    </div>
 
-		<div class="mdl-card__media" id="list-view" ng-show="addMode">
-			<form action="#" class="answer-form">
-				<div class="mdl-textfield mdl-js-textfield">
-          <textarea class="mdl-textfield__input" type="text" rows= "3" name="description" ng-model="new.description" data-required></textarea>
-          <label class="mdl-textfield__label" for="description">Write your answer...</label>
+    <div class="mdl-card__media">
+      <div class="line-breaker"></div>
+
+      <div>
+        {% for a in answers %}
+        <div class="qa-block">
+            <div class="question">{{ a.question.summary }}</div>
+            <div class="answer"> &nbsp;&nbsp;  {{ a.description }}</div>
         </div>
-        <br/>
-        <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-        Preview
-        </button>
+        {% endfor %}
 
-        <button type="button" ng-click="saveAnswer()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary">
-        Save
-        </button>
+    </div>
 
-			</form>
-		</div>
+    <div class="mdl-card__supporting-text">
+    </div>
 
+    <div class="mdl-card__actions">
+    </div>
 
-		<div ng-model="answers"
-		ng-repeat="(aid, answer) in answers | orderObjectBy:'aid' | reverse"	ng-class="{postx1: answer.myAns == true }">
-
-		<div class="mdl-card__media">
-			<div class="line-breaker"></div>
-			<div class="pre-content">{{ answer.description }}</div>
-		</div>
-
-		<div class="mdl-card__supporting-text">
-
-			<span class="post-sig">
-				<span class="add-ico">
-					<i class="material-icons profile">account_box</i>
-				</span>
-				<span class="down" ng-show="{{ answer.myAns }}">
-					<a href="#">Edit</a>
-				</span>
-				<span class="up">
-					{{ answer.username }}
-				</span>
-				<span class="up">
-					| Posted on: {{ answer.created_date | date:'medium' }}
-				</span>
-				<span class="up">
-					| Updated on: {{ answer.updated_date | date:'medium' }}
-				</span>
-			</span>
-
-			<span class="like-co">
-				<span class="mdl-chip mdl-chip--contact">
-					<span class="mdl-chip__contact mdl-color--primary mdl-color-text--black">{{ answer.likes || 0}}</span>
-					<span class="mdl-chip__text">
-						<span class="like up" ng-class="{liked: answer.mylike == true }">
-							<i class="material-icons" ng-click="like(answer.aid)">play_arrow</i>
-						</span>
-						<span class="like down" ng-class="{liked: answer.mylike == false }">
-							<i class="material-icons" ng-click="dislike(answer.aid)">play_arrow</i>
-						</span>
-					</span>
-				</span>
-			</span>
-
-		</div>
-	</div>
-
-	<div class="mdl-card__media" ng-if="noa == 0"
-	>
-	<div class="line-breaker"></div>
-	<div class="pre-content">There are no answers for this question. Be the first one to answer this!</div>
+  </div>
 </div>
-
-
-</div>
-</div>
-{% endverbatim %}

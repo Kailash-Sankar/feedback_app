@@ -18,7 +18,7 @@ class RatingAdmin(admin.ModelAdmin):
 	list_display = ('value','ico_name')
 
 class FeedbackAdmin(admin.ModelAdmin):
-	list_display = ('rating','user')
+	list_display = ('category','rating','user')
 
 class TransportAdmin(admin.ModelAdmin):
 	list_display = ('date','type')

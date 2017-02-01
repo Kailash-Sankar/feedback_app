@@ -29,6 +29,7 @@ class Answer(models.Model):
 	description	= models.TextField()
 	user = models.ForeignKey(User)
 	question = models.ForeignKey('Question')
+	feedback = models.ForeignKey('Feedback')
 	created_date = models.DateTimeField(auto_now_add=True)
 	updated_date = models.DateTimeField(auto_now=True)
 	deleted = models.BooleanField(default=False)
@@ -41,8 +42,9 @@ class Rating(models.Model):
 	value = models.IntegerField()
 
 class Feedback(models.Model):
-	rating = models.IntegerField()
+	rating = models.ForeignKey('Rating')
 	created_date = models.DateTimeField(auto_now_add=True)
+	category = models.ForeignKey('Category')
 	user = models.ForeignKey(User)
 
 class Transport(models.Model):

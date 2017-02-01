@@ -15,15 +15,14 @@ urlpatterns = [
     #category
     url(r'^dashboard/$', views.dashboard, name='dashboard'),
     url(r'^cat/([0-9]+)$', views.category, name='category'),
+    url(r'^cat/([0-9]+)/questions$', views.questions, name='questions'),
 
     #save
     url(r'^cat/([0-9]+)/save$', views.saveForm, name='saveForm'),
+    url(r'^cat/([0-9]+)/answers/save$', views.saveAnswers, name='saveAnswers'),
 
-    #Views
-    url(r'^cat/([0-9]+)/questions$', views.questions, name='questions'),
-
-    #Q&A    
-    url(r'^question/([0-9]+)/answers/([0-9]*)$', views.answers, name='answers'),
+    #views
+    url(r'^feed/([0-9]+)/view$', views.viewFeedback, name='viewFeedback'),
 
     #profile
     url(r'^profile/$', views.profile, name='profile'),

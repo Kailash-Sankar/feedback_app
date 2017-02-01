@@ -27,8 +27,13 @@
         <div class="line-breaker"></div>
     </div>
 
-    <div class="mdl-card__supporting-text" ng-hide="showQ">
-      <div class="pre-content">Questions will be loaded after the above form is saved.</div>
+
+
+    <div class="mdl-card__supporting-text">
+      <button type="button" ng-show="showQ" ng-click="saveForm()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary">
+      Save
+      </button>
+      <div ng-hide="showQ" class="pre-content">Questions will be loaded after the above form is saved.</div>
     </div>
 
     </div>
