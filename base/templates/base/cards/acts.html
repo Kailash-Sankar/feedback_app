@@ -1,0 +1,36 @@
+
+<div class="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet">
+  <div class="mdl-card mdl-shadow--4dp card-st1 bg-color-x1">
+
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">Recent Activity</h2>
+    </div>
+
+    <div class="mdl-card__media" id="list-view">
+      <div class="line-breaker"></div>
+
+      <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp fill-table">
+        <thead>
+          <tr>
+            <th class="mdl-data-table__cell--non-numeric">Category</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+            {% for act in acts %}
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric"> {{ act.category.name }} </td>
+              <td> {{ act.created_date }} </td>
+              <td> <a href="/feed/{{ act.id }}/view">View</a> </td>
+            </tr>
+            {% endfor %}
+
+          </tbody>
+        </table>
+
+        <div class="line-breaker"></div>
+    </div>
+
+   </div>
+</div>
