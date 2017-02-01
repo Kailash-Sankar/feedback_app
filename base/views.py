@@ -80,6 +80,23 @@ def category(request,cid):
 def profile(request):
 	return render( request, 'base/user_profile.html')
 
+@login_required()
+def viewFeedback(request,fid):
+	fObj = Feedback.objects.get(id=fid)
+	cat = fObj.category
+
+	if cat.id == 1:
+		sObj = Transport.objects.get(feedback_id=fObj.id)
+
+		types = { 1 : 'Pickup', 2: 'Drop', 3: 'Pickup & Drop'}
+		sObj.type = types[sObj.type]
+
+	aObj = Answer.objects.filter(feedback_id=fObj.id)
+
+	return render( request, 'base/view_feedback.html',
+		{ 'f' : fObj, 't' : sObj, 'answers' : aObj, 'cat' : cat }
+	)
+
 # ---- API endpoints -----
 
 def saveForm(request,cid):
@@ -89,23 +106,22 @@ def saveForm(request,cid):
 	print 'test',data
 
 	fObj = Feedback(
-		rating = data['rating'],
+		rating_id = data['rating'],
 		user_id = user.id,
+		category_id = cid,
 	);
-	#fObj.save();
+	fObj.save()
+	ret = { 'fid' : fObj.id	}
 
-	tObj = Transport(
+	if cid == '1':
+		tObj = Transport(
 		date = data['date'],
 		type = data['type'],
 		description= data['description'],
 		feedback_id = fObj.id,
-	);
-	#tObj.save();
-
-	ret = {
-		'fid' : fObj.id,
-		'tid' : tObj.id,
-	};
+		)
+		tObj.save()
+		ret['tid'] = tObj.id
 
 	return JsonResponse(ret)
 
@@ -121,16 +137,24 @@ def questions(request,cid):
 	return JsonResponse(q,safe=False);
 
 
-def answers(request,qid,page):
-	ansObj = Answer.objects.filter(question=qid);
+def saveAnswers(request,cid):
+	data = json.loads(request.body)
 	user = request.user
 
-	ansList = {};
-	for a in ansObj:
-		row = buildAnswerRow(a,user);
-		ansList[a.id] = row;
+	fObj = Feedback.objects.get(id=data['fid']);
 
-	return JsonResponse(ansList,safe=False)
+	aidList = [];
+	for q in data['questions']:
+		ansObj = Answer(
+			description	= q['answer'],
+			user_id = user.id,
+			question_id = q['id'],
+			feedback_id = fObj.id
+		)
+		ansObj.save()
+		aidList.append(ansObj.id)
+
+	return JsonResponse(aidList,safe=False)
 
 def me(request):
 	user = request.user
@@ -163,23 +187,6 @@ def buildAnswerRow(a,user):
 		'uid'			: a.user.id,
 		'created_date' 	: a.created_date,
 		'updated_date' 	: a.updated_date,
-		'likes'			: a.likes,
-		'myAns'			: False,
 	}
-
-	#check if logged in user liked this answer
-	try:
-   		likeObj = ALike.objects.filter(answer=a.id,user=user.id).get()
-   		mylike = likeObj.like
-	except ALike.DoesNotExist:
-   		mylike = None
-   	except AttributeError:
-   		myLike = None
-
- 	row['mylike'] = mylike
-
- 	#check if the logged in user added this answer
-	if user.id == a.user.id:
-		row['myAns'] = True;
 
 	return row

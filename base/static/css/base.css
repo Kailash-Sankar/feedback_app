@@ -307,12 +307,35 @@ i.chip {
 
 .ask-form .mdl-textfield,
 .answer-form .mdl-textfield,
-.profile-form .mdl-textfield {
+.profile-form .mdl-textfield,
+.summary .mdl-textfield {
   width: 500px;
+  vertical-align: top;
 }
 
 .answer-form {
   border-top: 1px solid #aaa;
   background-color:#ddd;
   padding:10px;
+}
+
+.summary label {
+  font-weight:600;
+}
+
+/* ----- text --------- */
+
+.qa-block {
+  margin-bottom:10px;
+  border-bottom:1px solid #aaa;
+}
+
+.question {
+  font-size:16px;
+}
+
+.answer {
+  font-size:14px;
+  white-space: pre-line;
+  color: rebeccapurple;
 }

@@ -18,8 +18,15 @@ app.controller('mainFeed', function($scope, $http, $rootScope, $timeout, jaximus
     jaximus.saveDataSet(url,$scope.data)
     .success(function(data, status, headers, config) {
       console.log(data);
-      jaximus.toastThis('Trip information saved.');
-      $rootScope.$broadcast("loadQ", {});
+
+      if ( data.fid && data.tid ) {
+        $rootScope.fid = data.fid;
+        jaximus.toastThis('Trip information saved.');
+        $rootScope.$broadcast("loadQ", data);
+      }
+      else {
+        jaximus.toastThis('Save error. Please try agian later.');
+      }
     })
     .error(function(data, status, headers, config) {
       jaximus.toastThis('Error. Please try again.');
@@ -34,7 +41,7 @@ app.controller('mainFeed', function($scope, $http, $rootScope, $timeout, jaximus
 });
 
 //Trending Answered Questions
-app.controller('catQuestions', function($scope, $http, $rootScope, $timeout, jaximus) {
+app.controller('catQuestions', function($scope, $http, $rootScope, $timeout, $window, jaximus) {
 
   $scope.questions = [];
   $scope.showQ=false;
@@ -49,46 +56,30 @@ app.controller('catQuestions', function($scope, $http, $rootScope, $timeout, jax
   });
   }
 
-  $rootScope.$on("loadQ", function(){
-      console.log('something is happening');
+  $rootScope.$on("loadQ", function(data){
+      console.log('something is happening',data);
       loadQuestions();
   });
 
-});
+  $scope.saveForm = function() {
+    var url = '/cat/' + $rootScope.cid + '/answers/save';
+    var data = {
+      questions : $scope.questions,
+      fid : $rootScope.fid
+    }
+    console.log('questions',data)
 
-
-
-
-//My Questions
-app.controller('myQuestions', function($scope, $http, $rootScope, $timeout, jaximus) {
-
-  $scope.trendingItems = [];
-  $scope.jaxip=false;
-  loadTrending();
-
-  //indicate when new data is ready
-  $scope.newDataAvailable = false;
-
- //load trending questions
- function loadTrending() {
-  $scope.jaxip=true;
-  jaximus.loadDataSet('/trending/my')
-  .success(function(data, status, headers, config) {
-    console.log(data);
-    $scope.jaxip=false;
-    $scope.trendingItems = data;
-  })
-  .error(function(data, status, headers, config) {
-    console.log('something went wrong.');
-    $scope.jaxip=false;
-  });
-
-  jaximus.toastThis('Data loaded.');
-}
-
-$scope.updateList = function() {
-  loadTrending();
-};
+    jaximus.saveDataSet(url,data)
+    .success(function(data, status, headers, config) {
+      console.log(data);
+      jaximus.toastThis('Feedback saved.');
+      $window.location.href = '/feed/' + $rootScope.fid + '/view';
+    })
+    .error(function(data, status, headers, config) {
+      jaximus.toastThis('Error. Please try again.');
+      console.log('something went wrong.')
+    });
+  };
 
 });
 

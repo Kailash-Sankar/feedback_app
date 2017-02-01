@@ -1,0 +1,28 @@
+{% extends 'base/wrapper.html' %}
+
+{% block pagetitle %} Feedback Summary {% endblock %}
+
+{% block ngapp %} ng-app="dashboard" {% endblock %}
+
+{% load staticfiles %}
+{% block content %}
+	{% csrf_token %}
+
+	<input type="hidden" value="{{ cat.id }}" name='cid'>
+	<input type="hidden" value="{{ f.id }}" name='fid'>
+
+	{% if cat.id == 1 %}
+			{% include 'base/cards/view_transport.html' %}
+	{% elif cat.id == 2 %}
+			{% include 'base/cards/view_cafeteria.html' %}
+	{% else %}
+			Please select a valid category
+	{% endif %}
+
+	{% include 'base/cards/answers.html' %}
+
+{% endblock %}
+
+{% block tail_scripts %}
+
+{% endblock %}
