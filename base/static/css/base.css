@@ -323,6 +323,11 @@ i.chip {
   font-weight:600;
 }
 
+.fill-table {
+  margin-left: auto;
+  margin-right: auto;  
+}
+
 /* ----- text --------- */
 
 .qa-block {

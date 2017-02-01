@@ -13,7 +13,7 @@ urlpatterns = [
     url(r'^meta/$', views.display_meta, name='meta'),
 
     #category
-    url(r'^dashboard/$', views.dashboard, name='dashboard'),
+    url(r'^dashboard$', views.dashboard, name='dashboard'),
     url(r'^cat/([0-9]+)$', views.category, name='category'),
     url(r'^cat/([0-9]+)/questions$', views.questions, name='questions'),
 
@@ -23,6 +23,7 @@ urlpatterns = [
 
     #views
     url(r'^feed/([0-9]+)/view$', views.viewFeedback, name='viewFeedback'),
+    url(r'^activity$', views.activity, name='activity'),
 
     #profile
     url(r'^profile/$', views.profile, name='profile'),

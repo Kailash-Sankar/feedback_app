@@ -81,6 +81,16 @@ def profile(request):
 	return render( request, 'base/user_profile.html')
 
 @login_required()
+def activity(request):
+	user = request.user
+	acts = Feedback.objects.filter(user_id=user.id)
+	print acts
+	print acts[0].category.name
+	return render( request, 'base/view_activity.html', { 'acts' : acts })
+
+
+
+@login_required()
 def viewFeedback(request,fid):
 	fObj = Feedback.objects.get(id=fid)
 	cat = fObj.category
@@ -126,13 +136,8 @@ def saveForm(request,cid):
 	return JsonResponse(ret)
 
 def questions(request,cid):
-	print 'question:',cid
-
-	qObj = Question.objects.filter(category=cid).values();
-	print
 	user = request.user;
-	print "questions",qObj
-
+	qObj = Question.objects.filter(category=cid).values();
 	q = list(qObj)
 	return JsonResponse(q,safe=False);
 
