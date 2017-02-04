@@ -7,6 +7,7 @@ class Category(models.Model):
 	name = models.CharField(max_length=80)
 	ico = models.CharField(max_length=80,null=True)
 	sort_id = models.IntegerField()
+	theme =  models.CharField(max_length=80,default='x2')
 	#add icon pic here
 	#parent = models.ForeignKey('Category',null=True,blank=True)
 

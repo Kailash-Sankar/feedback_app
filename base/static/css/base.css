@@ -72,8 +72,9 @@ span.down a {
 }
 
 .line-breaker.tdl {
-  border: 0.5px solid #FFC107;
+  border: 0.5px solid #757575;
   margin-right: 15px;
+  border-top: 0px;
 }
 
 .spacer {
@@ -291,6 +292,10 @@ i.chip {
   background-color: #D2B48C;
 }
 
+.bg-color-x6 {
+  background-color: #dbe76e;
+}
+
 .off-blk1 {
   color: rgb(29, 31, 32);
 }
@@ -325,7 +330,11 @@ i.chip {
 
 .fill-table {
   margin-left: auto;
-  margin-right: auto;  
+  margin-right: auto;
+}
+
+.mdl-textfield__label {
+  color:#333;
 }
 
 /* ----- text --------- */
