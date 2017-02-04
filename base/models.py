@@ -21,6 +21,7 @@ class Question(models.Model):
 	updated_date = models.DateTimeField(auto_now=True)
 	category = models.ForeignKey('Category',null=True,blank=True)
 	deleted = models.BooleanField(default=False)
+	rating	= models.ForeignKey('Rating',null=True,blank=True)
 
 	def __str__(self):
 		return self.summary
@@ -40,6 +41,9 @@ class Answer(models.Model):
 class Rating(models.Model):
 	ico_name = models.CharField(max_length=80)
 	value = models.IntegerField()
+
+	def __str__(self):
+		return self.ico_name
 
 class Feedback(models.Model):
 	rating = models.ForeignKey('Rating')

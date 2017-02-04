@@ -15,6 +15,9 @@ app.controller('mainFeed', function($scope, $http, $rootScope, $timeout, jaximus
       'description' : $scope.description
     };
 
+    //rating is required while fetching questions
+    $rootScope.rating = data.rating;
+
     jaximus.saveDataSet(url,$scope.data)
     .success(function(data, status, headers, config) {
       console.log(data);
@@ -47,7 +50,7 @@ app.controller('catQuestions', function($scope, $http, $rootScope, $timeout, $wi
   $scope.showQ=false;
 
   function loadQuestions() {
-   var url = '/cat/' + $rootScope.cid + '/questions';
+   var url = '/cat/' + $rootScope.cid + '/questions/' + $rootScope.rating;
    jaximus.loadDataSet(url)
    .success(function(data, status, headers, config) {
       console.log(data);
