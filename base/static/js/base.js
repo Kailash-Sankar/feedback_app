@@ -22,16 +22,12 @@ app.factory('jaximus', function ($http, $rootScope, $timeout) {
         return $http.get(url);
       },
 
-      //post actions
-      likePost : function(type,id,like,myLike) {
+      // pending re-write
+      loadSec : function(url,data) {
         var req = {
           method: 'POST',
-          url: '/' + type + '/' + id + '/like',
-          data: {
-            'like' : like,
-            'myLike' : myLike
-            //'csrfmiddlewaretoken' : $('input[name="csrfmiddlewaretoken"]').val()
-          }
+          url: url,
+          data: data
         };
         return $http(req);
       },

@@ -15,7 +15,7 @@ urlpatterns = [
     #category
     url(r'^dashboard$', views.dashboard, name='dashboard'),
     url(r'^cat/([0-9]+)$', views.category, name='category'),
-    url(r'^cat/([0-9]+)/questions$', views.questions, name='questions'),
+    url(r'^cat/([0-9]+)/questions/([0-9]*)$', views.questions, name='questions'),
 
     #save
     url(r'^cat/([0-9]+)/save$', views.saveForm, name='saveForm'),

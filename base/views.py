@@ -7,6 +7,7 @@ from base.models import *
 import logging
 import json
 from django.db.models import F
+from django.db.models import Q
 from django.db.models import Count
 from django.contrib.auth.decorators import login_required
 
@@ -113,8 +114,6 @@ def saveForm(request,cid):
 	data = json.loads(request.body)
 	user = request.user
 
-	print 'test',data
-
 	fObj = Feedback(
 		rating_id = data['rating'],
 		user_id = user.id,
@@ -125,19 +124,22 @@ def saveForm(request,cid):
 
 	if cid == '1':
 		tObj = Transport(
-		date = data['date'],
-		type = data['type'],
-		description= data['description'],
-		feedback_id = fObj.id,
+			date = data['date'],
+			type = data['type'],
+			description= data['description'],
+			feedback_id = fObj.id,
 		)
 		tObj.save()
 		ret['tid'] = tObj.id
 
 	return JsonResponse(ret)
 
-def questions(request,cid):
+def questions(request,cid,rating):
 	user = request.user;
-	qObj = Question.objects.filter(category=cid).values();
+
+	qObj = Question.objects.filter(
+		Q(category=cid,rating=rating) |
+		Q(category=cid,rating__isnull=True)).values();
 	q = list(qObj)
 	return JsonResponse(q,safe=False);
 
