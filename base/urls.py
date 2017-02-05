@@ -32,4 +32,7 @@ urlpatterns = [
     #vendors
     url(r'^cat/([0-9]+)/loc/([0-9]+)/vendors$', views.vendors, name='vendors'),
 
+    #support
+    url(r'^help$', views.help, name='help'),
+
 ]

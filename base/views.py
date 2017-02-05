@@ -15,6 +15,8 @@ from django.contrib.auth.decorators import login_required
 logger = logging.getLogger(__name__)
 
 def home(request):
+	if request.user.is_authenticated():
+		return redirect(dashboard)
 	return render( request, 'base/home.html', {})
 
 
@@ -67,7 +69,8 @@ def user_logout(request):
 @login_required()
 def dashboard(request):
  	cats = Category.objects.all();
-	return render( request, 'base/dashboard.html', { 'cats' : cats })
+	page = { 'dashboard' : 1 }
+	return render( request, 'base/dashboard.html', { 'cats' : cats, 'page' : page })
 
 @login_required()
 def category(request,cid):
@@ -88,12 +91,17 @@ def profile(request):
 	return render( request, 'base/user_profile.html')
 
 @login_required()
+def help(request):
+	page = { 'help' : 1 }
+	return render( request, 'base/help.html', { 'page' : page })
+
+@login_required()
 def activity(request):
 	user = request.user
 	acts = Feedback.objects.filter(user_id=user.id)
-	print acts
-	print acts[0].category.name
-	return render( request, 'base/view_activity.html', { 'acts' : acts })
+	page = { 'activity' : 1 }
+
+	return render( request, 'base/view_activity.html', { 'acts' : acts, 'page' : page })
 
 
 
