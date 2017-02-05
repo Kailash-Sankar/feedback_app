@@ -44,7 +44,7 @@
                <li class="td-li">
 
                  {% for rating in ratings %}
-                 <span class="clickable smiley" ng-click="choose_smiley({{ rating.id }})" ng-class="{'selected': rated == {{ rating.id }} }">
+                 <span class="clickable smiley r-{{rating.id}}" ng-click="choose_smiley({{ rating.id }})" ng-class="{'selected': rated == {{ rating.id }} }">
                      <i class="material-icons">{{ rating.ico_name }}</i>
                  </span>
                  {% endfor %}
