@@ -28,10 +28,6 @@
               <input type="radio" id="option-2" class="mdl-radio__button" name="options" ng-model="trip_type" value="2">
               <span class="mdl-radio__label">Drop</span>
             </label>
-            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
-              <input type="radio" id="option-3" class="mdl-radio__button" name="options" ng-model="trip_type" value="3">
-              <span class="mdl-radio__label">Pickup & Drop</span>
-            </label>
           </div>
 
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -45,7 +41,7 @@
                <li class="td-li">
 
                  {% for rating in ratings %}
-                 <span class="clickable smiley" ng-click="choose_smiley({{ rating.id }})" ng-class="{'selected': rated == {{ rating.id }} }">
+                 <span class="clickable smiley r-{{rating.id}}" ng-click="choose_smiley({{ rating.id }})" ng-class="{'selected': rated == {{ rating.id }} }">
                      <i class="material-icons">{{ rating.ico_name }}</i>
                  </span>
                  {% endfor %}

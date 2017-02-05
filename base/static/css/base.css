@@ -146,7 +146,7 @@ span.down a {
 /* ---- icons ---- */
 
 .cat-ico {
-    text-align:center;
+  text-align:center;
 }
 
 .cat-ico a {
@@ -162,14 +162,29 @@ span.down a {
 }
 
 .smiley i {
-  font-size: 42px;
+  font-size: 62px;
   color:#333;
   cursor:pointer;
 }
 
-.smiley.selected i {
+.smiley.r-1 i {
+  color: #f35858;
+}
+
+.smiley.r-2 i {
+  color:#3e62c9;
+}
+
+.smiley.r-3 i {
   color:#FFA500;
 }
+
+.smiley.selected i {
+  color: #00BCD4;
+  border: 1px solid #00BCD4;
+  border-radius: 50%;
+}
+
 
 .add-ico {
   -webkit-align-self: flex-start;
