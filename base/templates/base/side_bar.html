@@ -1,31 +1,45 @@
 <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
 
-      <header class="demo-drawer-header">
-          <div class="demo-avatar"><i class="material-icons" style="font-size:80px;">account_circle</i></div>
-          <div class="demo-avatar-dropdown">
-            <span>Hello {{ user.username }},</span>
-            <div class="mdl-layout-spacer"></div>
-            <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-              <i class="material-icons" role="presentation">arrow_drop_down</i>
-              <span class="visuallyhidden">Options</span>
-            </button>
-            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-              <li class="mdl-menu__item redir-click" data-href="/profile">My Profile</li>
-              <li class="mdl-menu__item redir-click" data-href="/logout">Logout</li>
-            </ul>
-          </div>
-        </header>
-
-        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-
-          <a class="mdl-navigation__link" href="/dashboard"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Dashboard</a>
-
-          <a class="mdl-navigation__link" href="/activity"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">assignment</i>Activity</a>
-
-          <!-- <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>Feedback</a> -->
-
-         <div class="mdl-layout-spacer"></div>
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i>Help</a>
-        </nav>
-
+  <header class="demo-drawer-header">
+    <div class="demo-avatar"><i class="material-icons" style="font-size:80px;">account_circle</i></div>
+    <div class="demo-avatar-dropdown">
+      <span>Hello {{ user.username }},</span>
+      <div class="mdl-layout-spacer"></div>
+      <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">arrow_drop_down</i>
+        <span class="visuallyhidden">Options</span>
+      </button>
+      <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+        <li class="mdl-menu__item redir-click" data-href="/profile">My Profile</li>
+        <li class="mdl-menu__item redir-click" data-href="/logout">Logout</li>
+      </ul>
     </div>
+  </header>
+
+  <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+
+    <a class="mdl-navigation__link {% if page.dashboard %}active{% endif %}" href="/dashboard">
+      <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>
+      Dashboard
+    </a>
+
+    <a class="mdl-navigation__link {% if page.activity %}active{% endif %}" href="/activity">
+      <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">assignment</i>
+      Activity
+    </a>
+
+    {% if request.user.is_staff %}
+    <a class="mdl-navigation__link" href="/admin" target="_blank">
+      <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">&#xE8D3;</i>
+      Admin
+    </a>
+    {% endif %}
+
+    <div class="mdl-layout-spacer"></div>
+    <a class="mdl-navigation__link {% if page.help %}active{% endif %}" href="/help">
+      <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i>
+      Help
+    </a>
+  </nav>
+
+</div>

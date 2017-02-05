@@ -32,3 +32,5 @@ admin.site.register(Feedback,FeedbackAdmin)
 admin.site.register(Transport,TransportAdmin)
 admin.site.register(Location)
 admin.site.register(Vendor)
+
+admin.site.site_header = 'Feedback App Administration'
