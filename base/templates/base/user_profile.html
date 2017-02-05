@@ -6,13 +6,10 @@
 
 {% load staticfiles %}
 {% block content %}
-	{% csrf_token %}	
+	{% csrf_token %}
 	{% include 'base/cards/profile.html' %}
-	{% include 'base/cards/tags.html' %}
-
 {% endblock %}
 
 {% block tail_scripts %}
-	<script src="{% static 'js/profile.js' %}"></script>	
+	<script src="{% static 'js/profile.js' %}"></script>
 {% endblock %}
-
