@@ -57,3 +57,22 @@ class Transport(models.Model):
 	type = models.IntegerField()
 	description = models.CharField(max_length=150)
 	feedback = models.ForeignKey('Feedback')
+
+class Cafeteria(models.Model):
+	date = models.DateTimeField()
+	vendor = models.ForeignKey('Vendor')
+	feedback = models.ForeignKey('Feedback')	
+
+class Location(models.Model):
+	name = models.CharField(max_length=150)
+
+	def __str__(self):
+		return self.name
+
+class Vendor(models.Model):
+	name = models.CharField(max_length=150)
+	location = models.ForeignKey('Location')
+	active = models.BooleanField(default=True)
+
+	def __str__(self):
+		return self.name

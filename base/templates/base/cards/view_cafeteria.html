@@ -1,0 +1,50 @@
+
+<div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet">
+    <div class="mdl-card mdl-shadow--4dp card-todo bg-color-x2">
+
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text"> {{ cat.name  }} </h2>
+        <span class="add-ico">
+        </span>
+      </div>
+
+      <div class="mdl-card__media summary" id="list-view">
+
+        <div class="line-breaker"></div>
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <label>Location:</label>
+            {{ c.vendor.location }}
+        </div>
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <label>Vendor:</label>
+              {{ c.vendor }}
+          </div>
+
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <label>Date:</label>
+            {{ c.date }}
+          </div>
+
+          <br/>
+
+          <div class="mdl-textfield mdl-js-textfield">
+             <label>Rating:</label>
+             <span class="smiley">
+                    <i class="material-icons">{{ f.rating.ico_name }}</i>
+             </span>
+
+           </div>
+
+         <div class="line-breaker"></div>
+      </div>
+
+      <div class="mdl-card__supporting-text">
+      </div>
+
+      <div class="mdl-card__actions">
+      </div>
+
+    </div>
+  </div>

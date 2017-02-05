@@ -1,0 +1,78 @@
+
+<div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet">
+    <div class="mdl-card mdl-shadow--4dp card-todo bg-color-{{ cat.theme }}" ng-controller="mainFeed">
+
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text"> {{ cat.name  }} </h2>
+        <span class="add-ico">
+        </span>
+      </div>
+
+      <div class="mdl-card__media" id="list-view">
+        <div class="line-breaker"></div>
+        Please fill in the vendor details
+      </div>
+
+      <div class="mdl-card__media" id="list-view">
+
+        <div class="line-breaker tdl"></div>
+
+        <form action="#" class="ask-form" >
+
+          <div class="mdl-selectfield">
+              <label>Location</label>
+              <select name="location" ng-model="location" class="browser-default"
+              ng-change="loadVendors(location)">
+                <option value="" disabled selected>Choose a location</option>
+                {% for loc in locations  %}
+                  <option value="{{ loc.id }}">{{ loc.name }}</option>
+                {% endfor %}
+              </select>
+          </div>
+
+          <div class="mdl-selectfield">
+              <label>Location</label>
+              <select name="vendor" ng-model="vendor" class="browser-default"
+                ng-options="v.name for v in vendors track by v.id">
+                <option value="" disabled selected>Choose a vendor</option>
+              </select>
+          </div>
+
+          <div class="mdl-textfield mdl-js-textfield">
+             <label>Rate your experience with us:</label>
+             <ul>
+               <li class="td-li">
+
+                 {% for rating in ratings %}
+                 <span class="clickable smiley" ng-click="choose_smiley({{ rating.id }})" ng-class="{'selected': rated == {{ rating.id }} }">
+                     <i class="material-icons">{{ rating.ico_name }}</i>
+                 </span>
+                 {% endfor %}
+               </li>
+               <ul>
+           </div>
+
+           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+             <label class="mdl-textfield__label" for="meal_date">Date</label>
+             <input class="mdl-textfield__input" type="text" name="meal_date" ng-model="meal_date" id="meal_date" data-required>
+           </div>
+
+          <br/>
+
+          <button type="button" ng-click="saveCafeteriaForm()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary">
+          Save
+          </button>
+        </form>
+
+          <div class="line-breaker"></div>
+      </div>
+
+      <div class="mdl-card__supporting-text" ng-if="trendingItems.length == 0">
+        There are no items to show :(
+      </div>
+
+      <div class="mdl-card__actions">
+      </div>
+
+    </div>
+  </div>

@@ -4,9 +4,8 @@
 app.controller('mainFeed', function($scope, $http, $rootScope, $timeout, jaximus) {
   $rootScope.cid = $('input[name="cid"]').val();
 
-  $scope.saveForm = function() {
-    var url = '/cat/' + $rootScope.cid + '/save';
-
+  //prep transport data
+  $scope.saveTransportForm = function() {
     $scope.data = {
       'cid'         : $rootScope.cid,
       'rating'      : $scope.rated,
@@ -14,15 +13,33 @@ app.controller('mainFeed', function($scope, $http, $rootScope, $timeout, jaximus
       'type'        : $scope.trip_type,
       'description' : $scope.description
     };
+    saveForm();
+  }
+
+  //prep the cafeteria data
+  $scope.saveCafeteriaForm = function() {
+    $scope.data = {
+      'cid'         : $rootScope.cid,
+      'rating'      : $scope.rated,
+      'date'        : $scope.meal_date,
+      'loc_id'      : $scope.location,
+      'vendor_id'   : $scope.vendor.id
+    };
+    saveForm();
+  }
+
+  // save the main feedback form
+  function saveForm() {
+    var url = '/cat/' + $rootScope.cid + '/save';
+    console.log($scope.data);
 
     //rating is required while fetching questions
-    $rootScope.rating = data.rating;
+    $rootScope.rating = $scope.data.rating;
 
     jaximus.saveDataSet(url,$scope.data)
     .success(function(data, status, headers, config) {
       console.log(data);
-
-      if ( data.fid && data.tid ) {
+      if ( data.fid && data.type_id ) {
         $rootScope.fid = data.fid;
         jaximus.toastThis('Trip information saved.');
         $rootScope.$broadcast("loadQ", data);
@@ -37,6 +54,16 @@ app.controller('mainFeed', function($scope, $http, $rootScope, $timeout, jaximus
     });
   };
 
+  $scope.loadVendors = function(loc){
+    var url = '/cat/' + $rootScope.cid + '/loc/' + loc + '/vendors';
+    jaximus.loadDataSet(url)
+    .success(function(data, status, headers, config) {
+      console.log(data);
+      $scope.vendors = data;
+      $scope.showQ=true;
+    });
+  }
+
   $scope.choose_smiley = function(id) {
     $scope.rated = id;
   };
@@ -50,18 +77,18 @@ app.controller('catQuestions', function($scope, $http, $rootScope, $timeout, $wi
   $scope.showQ=false;
 
   function loadQuestions() {
-   var url = '/cat/' + $rootScope.cid + '/questions/' + $rootScope.rating;
-   jaximus.loadDataSet(url)
-   .success(function(data, status, headers, config) {
+    var url = '/cat/' + $rootScope.cid + '/questions/' + $rootScope.rating;
+    jaximus.loadDataSet(url)
+    .success(function(data, status, headers, config) {
       console.log(data);
       $scope.questions = data;
       $scope.showQ=true;
-  });
+    });
   }
 
   $rootScope.$on("loadQ", function(data){
-      console.log('something is happening',data);
-      loadQuestions();
+    console.log('something is happening',data);
+    loadQuestions();
   });
 
   $scope.saveForm = function() {
@@ -87,7 +114,7 @@ app.controller('catQuestions', function($scope, $http, $rootScope, $timeout, $wi
 });
 
 app.run(function($rootScope) {
-  $('input#trip_date').bootstrapMaterialDatePicker({
+  $('input#trip_date,input#meal_date').bootstrapMaterialDatePicker({
     format : 'YYYY-MM-DD hh:mm:ss'
   });
 });

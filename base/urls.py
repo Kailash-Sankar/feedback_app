@@ -28,4 +28,8 @@ urlpatterns = [
     #profile
     url(r'^profile/$', views.profile, name='profile'),
     url(r'^me/$', views.me, name='me'),
+
+    #vendors
+    url(r'^cat/([0-9]+)/loc/([0-9]+)/vendors$', views.vendors, name='vendors'),
+
 ]
