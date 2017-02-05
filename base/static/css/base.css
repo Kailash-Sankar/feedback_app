@@ -313,7 +313,8 @@ i.chip {
 .ask-form .mdl-textfield,
 .answer-form .mdl-textfield,
 .profile-form .mdl-textfield,
-.summary .mdl-textfield {
+.summary .mdl-textfield,
+.ask-form .mdl-selectfield {
   width: 500px;
   vertical-align: top;
 }

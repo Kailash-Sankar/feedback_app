@@ -1,25 +1,25 @@
 
 app.controller('Questions', function($scope, $http, $rootScope, $timeout, jaximus) {
-   $rootScope.qid = $('input[name="qid"]').val(); //default to zero
+  $rootScope.qid = $('input[name="qid"]').val(); //default to zero
 
 
-    loadQuestion();
+  loadQuestion();
 
-    //load question for a qid
-    function loadQuestion() {
-      var url = '/q/' + $rootScope.qid;
-      jaximus.loadDataSet(url)
-      .success(function(data, status, headers, config) {
-        console.log(data);
-        $scope.q = data;
-      })
-      .error(function(data, status, headers, config) {
-        console.log('something went wrong.')
-      });
+  //load question for a qid
+  function loadQuestion() {
+    var url = '/q/' + $rootScope.qid;
+    jaximus.loadDataSet(url)
+    .success(function(data, status, headers, config) {
+      console.log(data);
+      $scope.q = data;
+    })
+    .error(function(data, status, headers, config) {
+      console.log('something went wrong.')
+    });
 
-      jaximus.toastThis('Data loaded.');
-    };
-
+    jaximus.toastThis('Data loaded.');
+  };
+  
 });
 
 
@@ -46,11 +46,11 @@ app.controller('Answers', function($scope, $rootScope, $timeout, jaximus) {
     var url = $rootScope.qid + '/answers/' + $scope.page;
     jaximus.loadDataSet(url)
     .success(function(data, status, headers, config) {
-    	console.log(data);
-     $scope.jaxip=false;
-     $scope.answers = data;
-     $scope.noa =  Object.keys($scope.answers).length;
-   })
+      console.log(data);
+      $scope.jaxip=false;
+      $scope.answers = data;
+      $scope.noa =  Object.keys($scope.answers).length;
+    })
     .error(function(data, status, headers, config) {
       $scope.jaxip=false;
       console.log('something went wrong.')
@@ -77,16 +77,16 @@ app.controller('Answers', function($scope, $rootScope, $timeout, jaximus) {
     .success(function(data, status, headers, config) {
       console.log(data);
 
-        //add the new answer
-        $scope.answers[data.aid] = data;
+      //add the new answer
+      $scope.answers[data.aid] = data;
 
-        //reset add form
-        $scope.addMode = false;
-        $scope.new = {};
-        $scope.noa =  Object.keys($scope.answers).length;
-        jaximus.toastThis('Answer Saved.');
+      //reset add form
+      $scope.addMode = false;
+      $scope.new = {};
+      $scope.noa =  Object.keys($scope.answers).length;
+      jaximus.toastThis('Answer Saved.');
 
-      })
+    })
     .error(function(data, status, headers, config) {
       jaximus.toastThis('Error. Please try again.');
       console.log('something went wrong.')

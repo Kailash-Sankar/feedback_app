@@ -72,10 +72,16 @@ def dashboard(request):
 @login_required()
 def category(request,cid):
 	cat = Category.objects.get(id=cid);
-	ratings = Rating.objects.all().order_by('id');
-	return render( request, 'base/category.html',
-		{ 'cat' : cat, 'ratings' :ratings }
-	)
+	ratings = Rating.objects.all().order_by('id')
+	ret = { 'cat' : cat, 'ratings' :ratings }
+
+	# move this code to a dispatcher
+	if cat.id == 2:
+		#location and vendor info
+		locations = Location.objects.all().order_by('name')
+		ret['locations'] = locations
+
+	return render( request, 'base/category.html', ret )
 
 @login_required()
 def profile(request):
@@ -96,17 +102,21 @@ def viewFeedback(request,fid):
 	fObj = Feedback.objects.get(id=fid)
 	cat = fObj.category
 
-	if cat.id == 1:
-		sObj = Transport.objects.get(feedback_id=fObj.id)
+	ret = { 'f' : fObj, 'cat' : cat }
 
+	if cat.id == 1:
+		tObj = Transport.objects.get(feedback_id=fObj.id)
 		types = { 1 : 'Pickup', 2: 'Drop', 3: 'Pickup & Drop'}
-		sObj.type = types[sObj.type]
+		tObj.type = types[tObj.type]
+		ret['t'] = tObj
+	elif cat.id == 2:
+		cObj =  Cafeteria.objects.get(feedback_id=fObj.id)
+		ret['c'] = cObj
 
 	aObj = Answer.objects.filter(feedback_id=fObj.id)
+	ret['answers'] = aObj
 
-	return render( request, 'base/view_feedback.html',
-		{ 'f' : fObj, 't' : sObj, 'answers' : aObj, 'cat' : cat }
-	)
+	return render( request, 'base/view_feedback.html',ret)
 
 # ---- API endpoints -----
 
@@ -122,6 +132,7 @@ def saveForm(request,cid):
 	fObj.save()
 	ret = { 'fid' : fObj.id	}
 
+	# update to a proper dispatcher based save
 	if cid == '1':
 		tObj = Transport(
 			date = data['date'],
@@ -130,7 +141,15 @@ def saveForm(request,cid):
 			feedback_id = fObj.id,
 		)
 		tObj.save()
-		ret['tid'] = tObj.id
+		ret['type_id'] = tObj.id
+	elif cid == '2':
+		cObj = Cafeteria(
+			date = data['date'],
+			vendor_id = data['vendor_id'],
+			feedback_id = fObj.id,
+		)
+		cObj.save()
+		ret['type_id'] = cObj.id
 
 	return JsonResponse(ret)
 
@@ -162,6 +181,11 @@ def saveAnswers(request,cid):
 		aidList.append(ansObj.id)
 
 	return JsonResponse(aidList,safe=False)
+
+def vendors(request,cid,locid):
+	venObj = Vendor.objects.filter(location_id=locid).order_by('name').values();
+	vendors = list(venObj)
+	return JsonResponse(vendors,safe=False);
 
 def me(request):
 	user = request.user
