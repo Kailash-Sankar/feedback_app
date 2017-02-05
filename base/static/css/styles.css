@@ -397,33 +397,6 @@ ul.breadcrumb li .material-icons {
     line-height: 1.1;
 }
 
-
-/* ------------ folder ------------------- */
-
-.folder-co {
-	color:white;
-	font-size: 20px;
-}
-
-.folder {
-	    display: inline-block;
-		transition: all 200ms linear;
-		border-bottom:1px solid rgba(0,0,0,0);
-		cursor:pointer;
-}
-
-.folder:hover {
-	border-bottom:1px solid #438DBA;
-	color:#438DBA;
-}
-
-.folder-co i.material-icons  {
-	font-size: 30px;
-    margin-right: 10px;
-    top: 6px;
-    position: relative;
-}
-
 label.mdl-radio-main {
 	font-size:24px;
 	padding-right: 30px;
