@@ -35,4 +35,8 @@ urlpatterns = [
     #support
     url(r'^help$', views.help, name='help'),
 
+    #reports
+    url(r'^report$', views.report, name='report'),
+    url(r'^report/cat/([0-9]+)$', views.report_cat, name='report_cat'),
+
 ]

@@ -373,3 +373,33 @@ i.chip {
   white-space: pre-line;
   color: rebeccapurple;
 }
+
+
+/* report page */
+ul.summary {
+  display:inline-flex;
+}
+
+ul.summary li {
+  margin-right:5px;
+  padding-right:5px;
+}
+
+ul.summary i {
+  position: relative;
+  top: 25px;
+}
+
+ul.summary .mdl-chip {
+  position: relative;
+  top: -5px;
+}
+
+.vertical-breaker {
+  margin-left: 5px;
+  border-right: 1px solid rgb(0, 188, 212);
+  height: 50px;
+  display: inline-block;
+  position: relative;
+  top: 20px;
+}
