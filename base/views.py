@@ -103,7 +103,14 @@ def activity(request):
 
 	return render( request, 'base/view_activity.html', { 'acts' : acts, 'page' : page })
 
-
+@login_required()
+def report(request):
+	ret = {
+		'cats' : Category.objects.all(),
+		'page' : { 'report' : 1 },
+		'angCtrl' : 'reportMain',
+	}
+	return render( request, 'base/view_report.html', ret)
 
 @login_required()
 def viewFeedback(request,fid):
@@ -208,24 +215,18 @@ def me(request):
 
 	return JsonResponse(profile,safe=False)
 
+
+def report_cat(request,cid):
+	#fObj = Feedback.objects.filter(category_id=cid).order_by('-created_date')[:20].values();
+	#f = list(fObj)
+	cat = Category.objects.filter(id=cid).values('id','name','theme') #.get(id=cid)
+	fObj = Feedback.objects.filter(category_id=cid).values('category','rating__ico_name','rating__id').annotate(avg=Count('rating')).order_by('-avg');
+	data = { 'summary' : list(fObj), 'cat' : list(cat)[0], 'page' : { 'report' : 1 } };
+	return JsonResponse(data,safe=False);
+
 # ---------- local routines -----------
 
 def RecentlyAnsweredQuestions():
 	#list( Question.objects.all()[:5].values('summary','likes','id') )
 	x = Question.objects.annotate(noa=Count('answer')).order_by('-noa')[:5]	.values()
 	print 'QA',x;
-
-
-
-#build row for one answer
-def buildAnswerRow(a,user):
-	row = {
-		'aid' 			: a.id,
-		'description' 	: a.description,
-		'username' 		: a.user.username,
-		'uid'			: a.user.id,
-		'created_date' 	: a.created_date,
-		'updated_date' 	: a.updated_date,
-	}
-
-	return row

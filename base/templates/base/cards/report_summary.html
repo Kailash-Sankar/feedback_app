@@ -1,0 +1,38 @@
+{% verbatim %}
+<div class="mdl-cell mdl-cell--9-col mdl-cell--9-col-tablet" ng-show="show_summary">
+  <div class="mdl-card mdl-shadow--4dp card-st1 bg-color-x2">
+
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">{{ category.name }}</h2>
+    </div>
+
+    <div class="mdl-card__media" id="list-view">
+      <div class="line-breaker"></div>
+
+
+      <label>Overview:</label>
+      <ul class="summary">
+        <li class="td-li" ng-model="summary" ng-repeat="s in summary">
+          <span class="clickable smiley r-{{s.rating__id}}"
+          ng-click="choose_smiley({{ rating.id }})"
+          ng-class="{'selected': rated == {{ s.rating__id }} }">
+          <i class="material-icons">{{ s.rating__ico_name }}</i>
+          :
+          <span class="mdl-chip">
+            <span class="mdl-chip__text">{{ s.avg }}</span>
+          </span>
+          <div class="vertical-breaker"></div>
+        </span>
+      </li>
+      <ul>
+
+
+      </div>
+
+      <div class="mdl-card__actions">
+
+      </div>
+
+    </div>
+  </div>
+  {% endverbatim %}

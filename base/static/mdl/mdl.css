@@ -68,6 +68,7 @@ select:focus {
 
 /* Use custom arrow */
 .mdl-selectfield select {
+  cursor: pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;

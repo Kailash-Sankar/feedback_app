@@ -1,0 +1,33 @@
+
+<div class="mdl-cell mdl-cell--3-col mdl-cell--3-col-tablet">
+  <div class="mdl-card mdl-shadow--4dp card-st1 bg-color-x2">
+
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">Reports</h2>
+    </div>
+
+    <div class="mdl-card__media" id="list-view">
+      <div class="line-breaker"></div>
+
+      <div class="mdl-selectfield">
+        <label>Category</label>
+        <select name="cat" ng-model="cat" class="browser-default">
+          <option value="" disabled selected>Choose a category</option>
+          {% for cat in cats  %}
+          <option value="{{ cat.id }}">{{ cat.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <br/>
+    </div>
+
+    <div class="mdl-card__actions">
+      <button type="button" ng-click="loadReport()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary">
+        Submit
+      </button>
+    </div>
+
+  </div>
+
+</div>

@@ -20,7 +20,8 @@
 		{% include 'base/side_bar.html' %}
 		<main class="mdl-layout__content mdl-color--grey-100"
 		{% block ngapp %}{% endblock %}>
-			<div class="mdl-grid demo-content" ng-model="content" id="content">
+			<div class="mdl-grid demo-content" id="content"
+			{% if angCtrl %} ng-controller="{{ angCtrl}}" {% endif %}>
 				{% block content %}{% endblock %}
 			</div>
 				{% include 'base/utils/toast.html' %}

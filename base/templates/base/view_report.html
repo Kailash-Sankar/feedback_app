@@ -1,0 +1,15 @@
+{% extends 'base/wrapper.html' %}
+
+{% block pagetitle %} Report {% endblock %}
+
+{% block ngapp %} ng-app="dashboard" {% endblock %}
+
+{% block content %}
+		{% include 'base/cards/report_main.html' %}
+		{% include 'base/cards/report_summary.html' %}
+{% endblock %}
+
+{% block tail_scripts %}
+	{% load staticfiles %}
+	<script src="{% static 'js/report.js' %}"></script>
+{% endblock %}
