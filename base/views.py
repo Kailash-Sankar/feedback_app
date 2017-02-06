@@ -220,7 +220,7 @@ def report_cat(request,cid):
 	#fObj = Feedback.objects.filter(category_id=cid).order_by('-created_date')[:20].values();
 	#f = list(fObj)
 	cat = Category.objects.filter(id=cid).values('id','name','theme') #.get(id=cid)
-	fObj = Feedback.objects.filter(category_id=cid).values('category','rating__ico_name','rating__id').annotate(avg=Count('rating')).order_by('-avg');
+	fObj = Feedback.objects.filter(category_id=cid).values('category','rating__ico_name','rating__id').annotate(avg=Count('rating')).order_by('rating__id');
 	data = { 'summary' : list(fObj), 'cat' : list(cat)[0], 'page' : { 'report' : 1 } };
 	return JsonResponse(data,safe=False);
 
