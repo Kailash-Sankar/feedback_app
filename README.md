@@ -8,7 +8,7 @@ A customizable lightweight feedback app
 - AngularJS, MDL
 
 ## Design Principles
-Quite similar to my first design [agog](https://github.com/Kailash-Sankar/agog/edit/master/README.md). But this is a significant improvement.
+Quite similar to my first design [agog](https://github.com/Kailash-Sankar/agog/blob/master/README.md). But this is a significant improvement.
 
 ## Features
 - Set Categories for feedback, the icon, color theme
